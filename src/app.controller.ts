@@ -6,6 +6,10 @@ import { AuthService } from './auth/auth.service';
 @Controller()
 export class AppController {
   constructor(private authService: AuthService) {}
+  @Get('/')
+  index() {
+    return 'Hello'
+  }
 
   @UseGuards(LocalAuthGuard)
   @Post('auth/login')
