@@ -5,13 +5,13 @@ import { User, UserDocument, UserDto } from './users.schema';
 
 @Injectable()
 export class UsersService {
-  constructor(@InjectModel(User.name) private UserModel: Model<UserDocument>) {}
+  constructor(@InjectModel(User.name) private userModel: Model<UserDocument>) {}
 
   async findOne(username: string): Promise<User | undefined> {
-    return await this.UserModel.findOne({ username })
+    return await this.userModel.findOne({ username })
   }
 
-  async create(user: UserDto): Promise<User | undefined> {
-    return await this.UserModel.insertMany(user)
+  async create(user: UserDto): Promise<User> {
+    return await this.userModel.insertMany(user)
   }
 }
